@@ -3,18 +3,21 @@
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) {
-    let start = 0;
-    let end = nums.length - 1;
-    while (start <= end) {
-      let middle = Math.floor((start + end )/ 2);
-      if (nums[middle] === target) {
-        return middle;
-      } else if (nums[middle] < target) {
-        start = middle + 1;
-      } else {
-        end = middle - 1;
-      }
+const search = (nums, target) => {
+  let l = 0;
+  let r = nums.length - 1;
+
+  while (l <= r) {
+    m = parseInt((l + r) / 2)
+    
+    if (nums[m] > target) {
+      r = m - 1;
+    } else if (nums[m] < target) {
+      l = m + 1;
+    } else {
+      return m;
     }
-    return -1; 
+  }
+  
+  return -1;
 };
