@@ -3,17 +3,27 @@
  * @param {string} t
  * @return {boolean}
  */
-var isSubsequence = function(s, t) {
-  let i = 0;
-    let j = 0;
-    while(i < s.length){
-        if(j === t.length){
-            return false;
-        }
-        if(s[i] === t[j]){
+// const isSubsequence = (s, t) => {
+//     let arr = [];
+//     for (let character of t) {
+//        for (let letter of s) {
+//            if (character === letter) {
+//               arr = [...arr, character]; 
+//            }
+//        }
+//     }
+//     return arr.join('') === s;
+// };
+//Refactor
+const isSubsequence = (s, t) => {
+    let arr = [];
+    let i = 0; j = 0;
+    while (i < s.length && j < t.length) {
+        if (s[i] === t[j]) {
+            arr.push(t[j]);
             i++;
         }
         j++;
     }
-return true;
+    return arr.join('') === s;
 };
