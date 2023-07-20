@@ -2,12 +2,14 @@
  * @param {number} x
  * @return {boolean}
  */
-const isPalindrome = (x) => {
-  const string = x.toString();
-  let reversed = [];
-  string.split("").map(item => {
-    reversed.unshift(item);
-  });
-  const reveresedNum = Number(reversed.join(''));
-  return reveresedNum === x;
+ isPalindrome = x => {
+    const str = x.toString()
+    let l = 0;
+    let r = str.length - 1;
+    while (l < r) {
+        if (str[l] !== str[r]) return false;
+        l ++;
+        r --;
+    }
+    return true;
 };
