@@ -2,9 +2,7 @@
  * @param {string} s
  * @return {number}
  */
-const lengthOfLastWord = function(s) {
-  //trim end and // slice
-  const arrStr = s.trimEnd().split(" ");
-  // count last string
-  return arrStr[arrStr.length - 1].length;
+const lengthOfLastWord = s => {
+    const arr = s.trim().split(" ");
+    return arr[arr.length - 1].length;
 };
