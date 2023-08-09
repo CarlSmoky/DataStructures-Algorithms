@@ -2,25 +2,13 @@
  * @param {number[]} nums
  * @return {number}
  */
-const majorityElement = nums => {
-  // map elment and frequency
-  const map = {};
-  for (let e of nums) {
-    if (!map[e]) {
-      map[e] = 1;
-    } else {
-      map[e] += 1;
+const majorityElement = (nums) => {
+    //  map nums and count as value
+    let map = {};
+    for (let i = 0; i < nums.length; i++) {
+        const current = nums[i];
+        map[current] = map[current] ? map[current] + 1 : 1;
+        // if  count is bigger that n / 2, return key
+        if (map[current] > nums.length / 2) return current;
     }
-  }
-  console.log(map);
-  // get most frequent element
-  let frequency = 0;
-  let result;
-  for (let key in map) {
-    if (frequency < map[key]) {
-      frequency = map[key];
-      result = parseInt(key);
-    }
-  }
-  return result;
 };
