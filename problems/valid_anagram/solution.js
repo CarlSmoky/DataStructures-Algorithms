@@ -3,23 +3,18 @@
  * @param {string} t
  * @return {boolean}
  */
-var isAnagram = function(s, t) {
-    return [...s].sort().join('') === [...t].sort().join('');
+const isAnagram = (s, t) => {
+    if (s.length !== t.length) return false;
+    const sMap = countLetterMap(s)
+    const tMap = countLetterMap(t)
+    for (const [key, value] of Object.entries(sMap)) {
+      if (value !== tMap[key]) return false
+    }
+    return true;
 };
 
-// var isAnagram = function(s, t) {
-// if (s.length !== t.length) return false
-    
-//     const hashTable = {}
-//     for (let letter of s){
-//         if (!hashTable[letter]) hashTable[letter] = 0;
-//         hashTable[letter]++;
-//     }
-
-//     for (let letter of t){
-//         if (!hashTable[letter]) return false;
-//         hashTable[letter]--;
-//     }
-
-//     return true;
-// }
+const countLetterMap = str => {
+  return [...str].reduce((acc, cur) => {
+    return { ...acc, [cur]: (acc[cur] || 0) + 1 };
+  }, {});
+}
