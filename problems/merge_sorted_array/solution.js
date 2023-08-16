@@ -6,6 +6,20 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 const merge = (nums1, m, nums2, n) => {
-  nums1.splice(m, n, ...nums2);
-  nums1.sort((a, b) => a - b);
+    let first = m - 1;
+    let second = n - 1;
+    let i = m + n - 1;
+
+    while (second >= 0) {
+        let firstValue = nums1[first];
+        let secondValue = nums2[second];
+        if (firstValue > secondValue) {
+            nums1[i] = firstValue;
+            first--;
+        } else {
+            nums1[i] = secondValue;
+            second--;
+        }
+        i--;
+    }
 };
