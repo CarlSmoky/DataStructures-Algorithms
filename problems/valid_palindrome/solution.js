@@ -3,15 +3,11 @@
  * @return {boolean}
  */
 const isPalindrome = (s) => {
-  const newString = s.replace(/[^A-Z0-9]/ig, "").toLocaleLowerCase();
-  let left = 0;
-  let right = newString.length -1
-  while(left < right){
-    if (newString[left] !== newString[right]) return false;
-    else {
-      left++; // increment left to move forward
-      right--; // decrement right so we can reach the center/mid
-    }
-  }
-  return true;
+    const removeEmptystr = s.replace(/[^a-zA-Z0-9]/gi, "").toLowerCase();
+    if (removeEmptystr.length === 0) return true;
+    let reverseStr = "";
+    for (let i = removeEmptystr.length -1 ; i >= 0; i--) {
+        reverseStr += removeEmptystr[i];
+    } 
+    return removeEmptystr === reverseStr;
 };
