@@ -2,26 +2,26 @@
  * @param {string} s
  * @return {boolean}
  */
-const brackets = {
-  ')' : '(',
-  '}' : '{',
-  ']' : '['
-}
 const isValid = (s) => {
+  if (s.length === 1 || s.length % 2 !== 0) return false;
   let arr = [];
-  const values = Object.values(brackets);
-  
   for (let i = 0; i < s.length; i++) {
-    if (values.indexOf(s[i]) !== -1) {
-      arr = [...arr, s[i]];
+    if (s[i] === '(' || s[i] === '{'  || s[i] === '[' ) {
+      arr.push(s[i]);
     } else {
-      if (arr[arr.length -1] === brackets[s[i]]) {
-        arr.pop();
-      } 
-      else return false;
+       if (s[i] === ')' && arr[arr.length - 1] === '(') {
+         arr.pop();
+       }
+       else if (s[i] === '}' && arr[arr.length - 1] === '{') {
+         arr.pop();
+       }
+       else if (s[i] === ']' && arr[arr.length - 1] === '[') {
+         arr.pop();
+       }
+       else {
+         return false;
+       }
     }
   }
-  
-  return arr.length === 0 ? true : false;
-  
+  return arr.length === 0;
 };
