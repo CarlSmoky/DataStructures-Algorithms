@@ -3,14 +3,17 @@
  * @param {string} magazine
  * @return {boolean}
  */
-var canConstruct = function(ransomNote, magazine) {
-    const hashMap = {};
-    for (let i = 0; i < magazine.length; i++) {
-        !hashMap[magazine[i]] ? hashMap[magazine[i]] = 1 : hashMap[magazine[i]]++;
-    }
-    for (let i = 0; i < ransomNote.length; i++) {
-        if (!hashMap[ransomNote[i]]) return false;
-        hashMap[ransomNote[i]]--;
+const canConstruct = (ransomNote, magazine) => {
+    const hashRansomeNote = countLetterMap(ransomNote);
+    const hashMagazine = countLetterMap(magazine);
+    for (let [key, value] of Object.entries(hashRansomeNote)) {
+      if (!hashMagazine[key] || hashMagazine[key] < value) return false;
     }
     return true;
 };
+
+const countLetterMap = str => {
+  return [...str].reduce((acc, cur) => {
+    return { ...acc, [cur]: (acc[cur] || 0) + 1 };
+  }, {});
+}
