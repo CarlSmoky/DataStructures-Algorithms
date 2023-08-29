@@ -3,12 +3,12 @@
  * @return {number}
  */
 const missingNumber = (nums) => {
-   const newNums = nums.sort((a, b) => a - b);
-   let arr = [];
-   for (let i = 0; i <= nums.length; i++) {
-      arr.push(i);
-   }
-   for (let i = 0; i < arr.length; i++) {
-      if (arr[i] !== newNums[i]) return arr[i];
-   }
+    const length = nums.length + 1;
+    let map = {};
+    nums.forEach(num => {
+        map[num] = map[num] ? map[num] + 1 : 1;
+    })
+    for (let i = 0; i < length; i++) {
+        if (!map[i]) return i;
+    }
 };
