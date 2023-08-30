@@ -2,13 +2,15 @@
  * @param {number[]} nums
  * @return {number}
  */
-const removeDuplicates = nums => {
-    let left = 0;
-    for (let right = 1; right < nums.length; right++) {
-        if (nums[right] !== nums[left]) {
-            left += 1;
-            nums[left] = nums[right];
+const removeDuplicates = (nums) => {
+    let l = 0;
+    let r = l + 1;
+    while (r < nums.length) {
+        if (nums[l] !== nums[r]) {
+            l ++;
+            nums[l] = nums[r];
         }
+        r ++;
     }
-    return left + 1;
+    return l + 1;
 };
