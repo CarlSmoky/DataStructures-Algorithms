@@ -5,10 +5,8 @@
  */
 const strStr = (haystack, needle) => {
     for (let i = 0; i < haystack.length; i++) {
-        const newStr = haystack.slice(i, i + needle.length);
-        if(newStr === needle) {
-            return i;
-        }
+        const slicedStr = haystack.slice(i, i + needle.length);
+        if (slicedStr === needle) return i;
     }
     return -1;
 };
