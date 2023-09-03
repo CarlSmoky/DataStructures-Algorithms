@@ -3,18 +3,16 @@
  * @param {number} n
  * @return {boolean}
  */
- const canPlaceFlowers = (flowerbed, n) => {
-    if (n === 0) return true;
-    // iterate
-    for (let i = 0; i < flowerbed.length; i++){
-        if (flowerbed[i] === 0) {
-            if ( !flowerbed[i - 1]  &&  !flowerbed[i + 1]) {
-                n--;
+const canPlaceFlowers = (flowerbed, n) => {
+    for (let i = 0; i < flowerbed.length; i++) {
+        if (flowerbed[i] === 1) continue;
+        if (
+            (i === 0 || flowerbed[i - 1] === 0) &&
+            (i === flowerbed.length - 1 || flowerbed[i + 1] === 0)
+         ) {
                 flowerbed[i] = 1;
-                if (n === 0) return true;
+                n --;
             }
-        }
     }
-    // find 0, how to count 0? 
-    return false;
+    return n <= 0;
 };
