@@ -2,12 +2,14 @@
  * @param {string} s
  * @return {boolean}
  */
-const isPalindrome = (s) => {
-    const removeEmptystr = s.replace(/[^a-zA-Z0-9]/gi, "").toLowerCase();
-    if (removeEmptystr.length === 0) return true;
-    let reverseStr = "";
-    for (let i = removeEmptystr.length -1 ; i >= 0; i--) {
-        reverseStr += removeEmptystr[i];
-    } 
-    return removeEmptystr === reverseStr;
+const isPalindrome = s => {
+    const newStr = s.replace(/[^a-zA-Z0-9]/gi, "").toLowerCase();
+    let l = 0;
+    let r = newStr.length - 1;
+    while (r > 0) {
+        if (newStr[l] !== newStr[r]) return false;
+        l++;
+        r--;
+    }
+    return true;
 };
