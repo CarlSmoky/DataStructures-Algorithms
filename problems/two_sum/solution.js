@@ -4,13 +4,19 @@
  * @return {number[]}
  */
 const twoSum = (nums, target) => {
-  const numsMap = {};
-  for (let i = 0; i < nums.length; i++) {
-    const diff = target - nums[i];
-    if (numsMap[diff] === 0 || numsMap[diff]) {
-      return [numsMap[diff], i];
-    } else {
-      numsMap[nums[i]] = i;
+    // hashmap
+    const hashMap = {};
+    // iterate through nums
+    for (let i = 0; i < nums.length; i++) {
+        // diff = target - nums[i]
+        const diff = target - nums[i];
+        // check if diff in hashmap
+        // if exists, return value of the key , i
+        if (hashMap[diff] || hashMap[diff] === 0) {
+            return [hashMap[diff], i];
+        // if not, add key as nums[i] and value as i
+        } else {
+            hashMap[nums[i]] = i
+        }
     }
-  }
 };
