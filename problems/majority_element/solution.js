@@ -2,16 +2,16 @@
  * @param {number[]} nums
  * @return {number}
  */
-const majorityElement = (nums) => {
-    const map = {};
+ const majorityElement = (nums) => {
+    let count = {}
     for (let i = 0; i < nums.length; i++) {
-        map[nums[i]] = map[nums[i]] ? map[nums[i]] + 1 : 1;
+        count[nums[i]] = count[nums[i]] ? count[nums[i]] + 1 : 1
     }
-    let [maxKey, maxCount] = [0, 0]
-    for ([key, value] of Object.entries(map)) {
-        if (maxCount < value) {
-            [maxKey, maxCount] = [key, value];
-        }   
+    let max = [0, 0]
+    for (let [key, value] of Object.entries(count)) {
+        if (max[1] < value) {
+            max = [key, value]
+        }
     }
-    return maxKey;
+    return max[0]
 };
