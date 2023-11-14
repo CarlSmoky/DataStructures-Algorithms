@@ -2,14 +2,14 @@
  * @param {number} x
  * @return {boolean}
  */
-const isPalindrome = (x) => {
-    const strArr = x.toString().split("");
-    let l = 0;
-    let r = strArr.length - 1;
-    while (l < strArr.length/2) {
-        if (strArr[l] !== strArr[r]) return false;
-        l++;
-        r--;
+const isPalindrome = x =>{
+    const strX = x.toString()
+    let left = 0
+    let right = strX.length - 1
+    while (left < right) {
+       if (strX[left] !== strX[right]) return false
+       left ++
+       right --
     }
-    return true;
+    return true
 };
