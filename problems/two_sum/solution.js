@@ -4,13 +4,14 @@
  * @return {number[]}
  */
 const twoSum = (nums, target) => {
-    let map = {}
+    let hashMap = {}
     for (let i = 0; i < nums.length; i++) {
         const diff = target - nums[i]
-        if (map[diff] || map[diff] === 0) {
-            return [map[diff], i]
+        if (hashMap[diff] === 0 || hashMap[diff]) {
+            return [hashMap[diff], i]
         } else {
-            map[nums[i]] = i
+            hashMap[nums[i]] = i
         }
+        
     }
 };
