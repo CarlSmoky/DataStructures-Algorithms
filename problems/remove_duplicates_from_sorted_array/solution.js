@@ -3,14 +3,14 @@
  * @return {number}
  */
 const removeDuplicates = (nums) => {
-    let l = 0;
-    let r = l + 1;
-    while (r < nums.length) {
-        if (nums[l] !== nums[r]) {
-            l ++;
-            nums[l] = nums[r];
+    const hash = {}
+    for (let i = 0; i < nums.length; i++) {
+        if (!hash[nums[i]]) {
+            hash[nums[i]] = true
+        } else {
+            nums.splice(i, 1)
+            i--
         }
-        r ++;
     }
-    return l + 1;
+    return nums.length
 };
