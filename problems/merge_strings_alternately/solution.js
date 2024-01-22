@@ -4,21 +4,16 @@
  * @return {string}
  */
 const mergeAlternately = (word1, word2) => {
-    let left = 0
-    let right = 0
-    let result = ''
-    while (left < word1.length || right < word2.length) {
-        if (left < word1.length && right < word2.length) {
-            result += word1[left]
-            result += word2[right]
-        } else if (left < word1.length && right >= word2.length) {
-            result += word1[left]
-        } else if (left >= word1.length && right < word2.length) {
-            result += word2[right]
+    let first = word1.length;
+    let second = word2.length;
+    let result = "";
+    for (let i = 0; i < first || i < second; i++) {
+        if( word1[i] !== undefined) {
+            result += word1[i];
         }
-        left ++
-        right ++
+        if( word2[i] !== undefined) {
+            result += word2[i];
+        }
     }
-    return result
-    
+    return result;
 };
