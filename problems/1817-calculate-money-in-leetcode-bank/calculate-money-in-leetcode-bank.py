@@ -1,12 +1,12 @@
 class Solution:
     def totalMoney(self, n: int) -> int:
-        day = 1
-        week = 0
+        pre = 0
+        cur = 0
         sum = 0
-        for i in range(1, n + 1):
-            sum += day + week
-            day += 1
+        for i in range(n):
             if i % 7 == 0:
-                week += 1
-                day = 1
+                pre += 1
+                cur = pre
+            sum += cur
+            cur += 1
         return sum
