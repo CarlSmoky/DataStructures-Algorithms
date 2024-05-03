@@ -3,15 +3,11 @@
  * @return {number}
  */
 const findMaxK = (nums) => {
-    const hash = {};
+    const set = new Set(nums);
     let maxNum = -1;
     for (let n of nums) {
-        const absNum = Math.abs(n);
-        if (hash[absNum] !== n) {
-            hash[absNum] = (hash[absNum] || 0) + n;
-        }
-        if (hash[absNum] === 0) {
-            maxNum = Math.max(maxNum, absNum);
+        if (n > 0 && set.has(-n)) {
+            maxNum = Math.max(maxNum, n)
         }
     }
     return maxNum;
