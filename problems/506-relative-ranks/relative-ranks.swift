@@ -11,11 +11,10 @@ class Solution {
         if (i < 3) {
             dict[sorted[i]] = ranking[i];
         } else {
-            dict[sorted[i]] = String(i + 1);
+            dict[sorted[i]] = "\(i + 1)";
         }
     }
 
     return score.compactMap { dict[$0] }
-    // return score.map(el => map[el])
     }
 }
