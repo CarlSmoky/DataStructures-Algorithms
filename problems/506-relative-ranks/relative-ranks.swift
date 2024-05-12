@@ -1,30 +1,21 @@
+
+
 class Solution {
     func findRelativeRanks(_ score: [Int]) -> [String] {
-        let sortedScores = score.sorted { $0 > $1 }
-   
-        var results: [String] = []
-        for val in score {
-            if let ranking = sortedScores.firstIndex(of: val) {
-                let str = getPlacementName(ranking) 
-                results.append(str)
-            }
+
+    let sorted = score.sorted { $0 > $1 }
+    var dict = [Int: String]()
+    let ranking = ["Gold Medal","Silver Medal","Bronze Medal"]
+
+    for i in (0 ..< score.count) {
+        if (i < 3) {
+            dict[sorted[i]] = ranking[i];
+        } else {
+            dict[sorted[i]] = String(i + 1);
         }
-
-        return results
     }
-}
 
-func getPlacementName(_ ranking: Int) -> String {
-    var placeString = ""
-    switch ranking {
-                    case 0:
-                    placeString = "Gold Medal"
-                    case 1: 
-                    placeString = "Silver Medal"
-                    case 2: 
-                    placeString = "Bronze Medal"
-                    default:
-                    placeString = "\(ranking + 1)"
+    return score.compactMap { dict[$0] }
+    // return score.map(el => map[el])
     }
-    return placeString
 }
