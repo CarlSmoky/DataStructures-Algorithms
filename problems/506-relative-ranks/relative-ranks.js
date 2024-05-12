@@ -3,19 +3,16 @@
  * @return {string[]}
  */
 const findRelativeRanks = (score) => {
-    let result = [];
     const sorted = [...score].sort((a, b) => b - a);
-    for (let i = 0; i < score.length; i++) {
-        if (score[i] === sorted[0]) {
-            result = [...result, "Gold Medal"];
-        } else if (score[i] === sorted[1]) {
-            result = [...result, "Silver Medal"];
-        } else if (score[i] === sorted[2]) {
-            result = [...result, "Bronze Medal"];
+    const map = {};
+    const ranking = ["Gold Medal","Silver Medal","Bronze Medal"]
+
+    for (let i = 0; i < sorted.length; i++) {
+        if (i < 3) {
+            map[sorted[i]] = ranking[i];
         } else {
-            const rank = sorted.indexOf(score[i]) + 1;
-            result = [...result, String(rank)];
+            map[sorted[i]] = String(i + 1);
         }
     }
-    return result;
+    return score.map(el => map[el])
 };
