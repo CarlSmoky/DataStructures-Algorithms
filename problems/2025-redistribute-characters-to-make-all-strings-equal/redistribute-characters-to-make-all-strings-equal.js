@@ -11,5 +11,11 @@ const makeEqual = (words) => {
         }
     }
     const values = Object.values(chaCount);
-    return values.every(count => count % words.length === 0);
+    for (let val of values) {
+        if (val % words.length !== 0) {
+            return false;
+        }
+    }
+    return true;
+    // return values.every(count => count % words.length === 0);
 };
