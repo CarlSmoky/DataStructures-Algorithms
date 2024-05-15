@@ -14,13 +14,13 @@ const maxLengthBetweenEqualCharacters = (s) => {
             hashMap[s[i]] = [i];
         }
     }
-    
-    let maxDiff = -Infinity;
+
+    let maxDiff = -1;
     for (const [key, value] of Object.entries(hashMap)) {
         if (value.length > 1) {
             const tmp = (value[value.length - 1]) - (value[0] + 1)
             maxDiff = Math.max(maxDiff, tmp);
         }
     }
-    return maxDiff >= 0 ? maxDiff : -1;
+    return maxDiff;
 };
