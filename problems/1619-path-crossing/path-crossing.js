@@ -3,34 +3,27 @@
  * @return {boolean}
  */
 const isPathCrossing = (path) => {
-    let position = "0-0";
-    const mapPos = {};
-    mapPos[position] = 1;
-    let arr = position.split("-")
-    
-    for (let direction of path) {
-        let tmp = 0;
+    const history = new Set(["0,0"]);
+
+    let coordinate = [0,0];
+    for (const direction of path) {
         switch (direction) {
             case "N":
-                tmp = parseInt(arr[1] + 1)
-                arr[1] = tmp;
-                break
+                coordinate[1] += 1;
+            break;
             case "S":
-                tmp = parseInt(arr[1] - 1)
-                arr[1] = tmp;
-                break;
+                coordinate[1] -= 1;
+            break;
             case "E":
-                tmp = parseInt(arr[0] + 1)
-                arr[0] = tmp;
-                break;
+                coordinate[0] += 1;
+            break;
             case "W":
-                tmp = parseInt(arr[0] - 1)
-                arr[0] = tmp;
-                break;
+                coordinate[0] -= 1;
+            break;
         }
-        position = arr.join("-");
-        if (mapPos[position]) return true;
-        mapPos[position] = 1;
+        const newPos = coordinate.join(",");
+        if (history.has(newPos)) return true;
+        history.add(newPos);
     }
     return false;
 };
