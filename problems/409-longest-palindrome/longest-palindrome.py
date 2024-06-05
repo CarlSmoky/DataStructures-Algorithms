@@ -1,15 +1,15 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        count = {}
-        for l in s:
-            if l in count:
-                count[l] += 1
-            else:
-                 count[l] = 1
+        # count = {}
+        # for l in s:
+        #     if l in count:
+        #         count[l] += 1
+        #     else:
+        #          count[l] = 1
 
         result = 0
         flag = False
-        for value in count.values():
+        for value in Counter(s).values():
             if value % 2 == 0:
                 result += value
             else:
