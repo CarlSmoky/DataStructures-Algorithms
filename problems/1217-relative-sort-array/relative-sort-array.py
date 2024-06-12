@@ -15,7 +15,8 @@ class Solution:
         
         result = []
         for n in arr2:
-            result.extend([n] * countMap[n])
+            # result.extend([n] * countMap[n])
+            result.extend(repeat(n, countMap[n]))
         
         result.extend(remain)
         return result
