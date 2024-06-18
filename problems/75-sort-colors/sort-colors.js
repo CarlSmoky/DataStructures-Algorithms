@@ -12,5 +12,4 @@ const sortColors = (nums) => {
             }
         }
     }
-    return nums
 };
