@@ -7,15 +7,8 @@ const maximumOddBinaryNumber = (s) => {
     for (let n of s) {
         count[n] = (count[n] || 0) + 1
     }
-    
-    if (!count[0]) {
-        return  Array(count[1]).fill(1).join("")
-    }
-    const getNumOfOne = count[1] - 1;
-    const tmpOne = Array(getNumOfOne).fill(1)
-    const tmpZero = Array(count[0]).fill(0)
-    return tmpOne.concat(tmpZero).concat(1).join("")
-    
-    
 
+    let result = !count[0] ?  "1".repeat(count[1]) : "1".repeat(count[1] - 1) + "0".repeat(count[0]) + "1";
+
+    return result;
 };
