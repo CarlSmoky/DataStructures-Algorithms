@@ -5,7 +5,6 @@
  */
 const canBeEqual = (target, arr) => {
     const count = new Map();
-    
     for (let i = 0; i < target.length; i++) {
         count.set(target[i], (count.get(target[i]) || 0) + 1);
         count.set(arr[i], (count.get(arr[i]) || 0) - 1);
