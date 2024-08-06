@@ -9,11 +9,6 @@ const kthDistinct = (arr, k) => {
      countMap.set(cha, countMap.get(cha) ? countMap.get(cha) + 1 : 1) 
    }
 
-   let distinct = []
-   for (let [key, value] of countMap.entries()){
-        if (value === 1) {
-            distinct = [...distinct, key]
-        }
-   }
-   return distinct[k - 1] ? distinct[k - 1] : ""
+   const distinct = arr.filter(el => countMap.get(el) === 1)
+   return distinct[k - 1] || "";
 };
