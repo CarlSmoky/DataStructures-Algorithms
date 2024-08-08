@@ -1,38 +1,22 @@
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
+        def quicksort(n):
+            if len(n) <= 1:
+                return n
+        
+            left, middle, right = [],[],[]
+            pivot = random.choice(n)
 
-        def merge(arr, L, M, R):
-            left, right = arr[L:M+1], arr[M+1:R+1]
-            i, j, k = L, 0, 0
-
-            while j < len(left) and k < len(right):
-                if left[j] <= right[k]:
-                    arr[i] = left[j]
-                    j += 1
+            for i in n:
+                if i == pivot:
+                    middle.append(i)
+                elif i < pivot:
+                    left.append(i)
                 else:
-                    arr[i] = right[k]
-                    k += 1
-                i += 1
-
-            while j < len(left):
-                nums[i] = left[j]
-                j += 1
-                i += 1
+                    right.append(i)
             
-            while k < len(right):
-                nums[i] = right[k]
-                k += 1
-                i += 1
+            return quicksort(left) + middle + quicksort(right)
+        
 
-        def mergeSort(arr, l , r):
-            if l == r:
-                return arr
-
-            m = (l + r) // 2
-            mergeSort(arr, l , m)
-            mergeSort(arr, m + 1, r)
-            merge(arr, l, m, r)
-            return arr
-
-        return mergeSort(nums, 0, len(nums) - 1)
+        return quicksort(nums)
         
