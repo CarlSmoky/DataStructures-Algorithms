@@ -8,9 +8,9 @@ const isSubsequence = (s, t) => {
     let tIndex = 0;
     while (sIndex < s.length && tIndex < t.length) {
         if (s[sIndex] === t[tIndex]) {
-            sIndex ++;
+            sIndex += 1;
         }
-        tIndex ++;
+        tIndex += 1;
     }
     return sIndex === s.length;
 };
