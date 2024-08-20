@@ -5,16 +5,13 @@
 const moveZeroes = (nums) => {
     let left = 0;
     let right = 0;
-
-    while(right < nums.length){
-        if(nums[right] !== 0){
-            let temp = nums[left];
+    while (right < nums.length) {
+        if (nums[right] !== 0) {
+            const tmp = nums[left];
             nums[left] = nums[right];
-            nums[right] = temp;
-            right++;
-            left++;
-        } else {
-            right++;
+            nums[right] = tmp;
+            left ++;
         }
+        right ++;
     }
 };
