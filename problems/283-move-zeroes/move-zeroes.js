@@ -7,9 +7,9 @@ const moveZeroes = (nums) => {
     let right = 0;
     while (right < nums.length) {
         if (nums[right] !== 0) {
-            const tmp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = tmp;
+            const tmp = nums[right];
+            nums[right] = nums[left];
+            nums[left] = tmp;
             left ++;
         }
         right ++;
