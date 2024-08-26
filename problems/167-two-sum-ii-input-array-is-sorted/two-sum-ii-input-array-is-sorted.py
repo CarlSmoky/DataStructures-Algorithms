@@ -4,9 +4,10 @@ class Solution:
         r = len(numbers) - 1
         while l < r:
             sum = numbers[l] + numbers[r]
-            if sum == target:
+            if target == sum:
                 return [l + 1, r + 1]
             if sum > target:
                 r -= 1
             else:
                 l += 1
+
