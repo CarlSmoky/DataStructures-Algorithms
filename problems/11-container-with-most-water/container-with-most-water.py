@@ -4,8 +4,8 @@ class Solution:
         r = len(height) - 1
         result = 0
         while l < r:
-            aria = (r - l) * min(height[l], height[r])
-            result = max(aria, result)
+            aria = min(height[l], height[r]) * (r - l)
+            result = max(result, aria)
             if height[l] < height[r]:
                 l += 1
             else:
