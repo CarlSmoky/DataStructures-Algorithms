@@ -4,12 +4,15 @@
  * @return {number}
  */
 const findMaxAverage = (nums, k) => {
-    let total = nums.slice(0, k).reduce((acc, cur) => acc + cur, 0);
-    let maxTotal = total;
-    for(let i = 0; i < nums.length - k; i++) {
-        total = total - nums[i] + nums[k + i];
-        maxTotal = Math.max(maxTotal, total)
+    let maxSum = 0;
+    for (let i = 0; i < k; i++){
+        maxSum += nums[i];
     }
-    return maxTotal/k
-    
+    let tmpSum = maxSum;
+    for (let i = 0; i < nums.length - k; i++) {
+        tmpSum -= nums[i];
+        tmpSum += nums[i + k];
+        maxSum = Math.max(maxSum, tmpSum)
+    }
+    return maxSum / k
 };
