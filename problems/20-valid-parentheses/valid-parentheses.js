@@ -4,23 +4,22 @@
  */
 const isValid = (s) => {
     const parentheses = {
-        "}" : "{",
-        ")" : "(",
-        "]" : "["
-    }
+        ')': '(',
+        '}': '{',
+        ']': '[' 
+    };
 
-    let stack = []
-    for (let c of s) {
-        if (c === "(" || c === "[" || c === "{") {
-            stack.push(c);
+    let stack = [];
+    for (let char of s) {
+        if (Object.values(parentheses).indexOf(char) !== -1) {
+            stack.push(char);
         } else {
-            if(stack[stack.length - 1] === parentheses[c]){
-                stack.pop();
+            if (stack[stack.length - 1] === parentheses[char]) {
+                stack.pop()
             } else {
                 return false;
             }
         }
     }
-
-    return stack.length === 0 ? true : false;
+    return stack.length === 0;
 };
