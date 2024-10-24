@@ -8,14 +8,11 @@ const mergeAlternately = (word1, word2) => {
     let second = 0;
     let result = "";
     while (first < word1.length || second < word2.length) {
-        if (word1[first]) {
-            result += word1[first];
-            first ++;
-        }
-        if (word2[second]) {
-            result += word2[second];
-            second ++;
-        }
+        // Nullish coalescing operator (??)
+        result += word1[first] ?? "";
+        result += word2[second] ?? "";
+        first ++;
+        second ++;
     }
     return  result;
 };
