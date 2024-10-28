@@ -1,13 +1,10 @@
 class Solution:
     def threeConsecutiveOdds(self, arr: List[int]) -> bool:
-        count = 0
-        for n in arr:
-            if n % 2 != 0:
-                count += 1
-            else:
-                count = 0
-            
-            if count == 3:
-                return True
+      for i in range(len(arr) - 2):
+        if self.isOdd(arr[i]) and self.isOdd(arr[i + 1])  and self.isOdd(arr[i + 2]):
+            return True
+      return False
         
-        return False
+
+    def isOdd(self, num:[int]) -> bool:
+        return num % 2 != 0
