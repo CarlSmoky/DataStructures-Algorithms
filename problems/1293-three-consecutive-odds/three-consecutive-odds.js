@@ -2,9 +2,14 @@
  * @param {number[]} arr
  * @return {boolean}
  */
-const threeConsecutiveOdds = (arr) => {
-    for (let i = 1; i < arr.length - 1; i++) {
-        if (arr[i - 1] % 2 !== 0 && arr[i] % 2 !== 0 && arr[i + 1] % 2 !== 0) return true;
+const threeConsecutiveOdds = arr => {
+    let count = 0;
+    for (let i = 0; i < arr.length - 2; i++) {
+        if (isOdd(arr[i]) && isOdd(arr[i + 1]) && isOdd(arr[i + 2])) return true;
     }
     return false;
 };
+
+const isOdd = num => {
+    return num % 2 !== 0;
+}
