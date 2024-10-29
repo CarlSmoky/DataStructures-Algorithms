@@ -25,7 +25,7 @@ const threeSum = function(nums) {
             } else {
                 result.push([nums[i], nums[j], nums[k]]);
                 j ++;
-
+                // This while loop skips duplicate values to avoid adding the same triplet multiple times.
                 while (nums[j] === nums[j - 1] && j < k) {
                     j ++;
                 }
