@@ -5,21 +5,20 @@
  */
 const maxOperations = (nums, k) => {
     nums.sort((a, b) => a - b);
-  
-    let result = 0;
     let l = 0;
     let r = nums.length - 1;
+    let res = 0;
     while (l < r) {
         const sum = nums[l] + nums[r];
-        if (sum === k) {
-            result ++;
+        if (k === sum) {
+            res ++;
             l ++;
             r --;
-        } else if (sum < k) {
-            l ++;
+        } else if (k < sum) {
+            r --;
         } else {
-            r --;
+            l ++;
         }
     }
-    return result;
+    return res;
 };
