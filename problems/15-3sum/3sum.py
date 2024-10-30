@@ -11,32 +11,21 @@ class Solution:
             k = len(nums) - 1
             while j < k:
                 sum = nums[i] + nums[j] + nums[k]
-                if sum > 0:
-                    k -= 1
-                elif sum < 0:
-                    j += 1
-                else:
+                if sum == 0:
                     res.append([nums[i], nums[j], nums[k]])
                     j += 1
 
-                    while nums[j] == nums[j-1] and j < k:
+                    while nums[j] == nums[j - 1] and j < k:
                         j += 1
+                elif sum < 0:
+                    j += 1
+                else:
+                    k -= 1
         
         return res
 
 
-        # total = nums[i] + nums[j] + nums[k]
-
-        #         if total > 0:
-        #             k -= 1
-        #         elif total < 0:
-        #             j += 1
-        #         else:
-        #             res.append([nums[i], nums[j], nums[k]])
-        #             j += 1
-
-        #             while nums[j] == nums[j-1] and j < k:
-        #                 j += 1
+        
 
 
         
