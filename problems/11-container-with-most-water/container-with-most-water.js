@@ -2,14 +2,18 @@
  * @param {number[]} height
  * @return {number}
  */
-const maxArea = (height) => {
-    let result = 0;
-    let left = 0;
-    let right = height.length - 1;
-    while (left < right) {
-        const aria = (right - left) * Math.min(height[left], height[right]);
-        result = Math.max(result, aria)
-        height[left] > height[right] ? right-- : left++;
+const maxArea = height => {
+    let l = 0;
+    let r = height.length - 1;
+    let res = 0;
+    while (l < r) {
+        const area = Math.min(height[l], height[r]) * (r - l);
+        res = Math.max(res, area);
+        if (height[l] < height[r]) {
+            l ++;
+        } else {
+            r --;
+        }
     }
-    return result;
+    return res;
 };
