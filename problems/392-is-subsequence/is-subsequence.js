@@ -4,13 +4,13 @@
  * @return {boolean}
  */
 const isSubsequence = (s, t) => {
-    let l = 0;
-    let r = 0;
-    while (l < s.length && r < t.length) {
-        if (s[l] === t[r]) {
-            l ++;
+    let sPointer = 0;
+    let tPointer = 0;
+    while (sPointer < s.length && tPointer < t.length) {
+        if (s[sPointer] === t[tPointer]) {
+            sPointer ++;
         }
-        r ++;
+        tPointer ++;
     }
-    return s.length === l;
+    return sPointer === s.length
 };
