@@ -4,18 +4,19 @@
  * @return {number}
  */
 const maxVowels = (s, k) => {
-    const vowels = ['a', 'e', 'i', 'o', 'u'];
-    let count = [...s].splice(0, k).filter(el => vowels.indexOf(el) !== -1).length;
+    let res = 0, count = 0;
+    const Vowels = new Set(['a', 'e', 'i', 'o', 'u']);
 
-    let maxTotal = count;
-    for (let i = 0; i < s.length - k; i++) {
-        if (vowels.indexOf(s[i]) !== -1) {
-            count --;
-        }
-        if (vowels.indexOf(s[i + k]) !== -1) {
-            count ++;
-        }
-        maxTotal = Math.max(maxTotal, count);
+    for (let i = 0; i < k; i++) {
+        if (Vowels.has(s[i])) count++;
     }
-    return maxTotal;
+    res = count;
+
+    for (let i = 0; i < s.length - k; i++) {
+        if (Vowels.has(s[i])) count--;         
+        if (Vowels.has(s[i + k])) count++;      
+        res = Math.max(res, count);             
+    }
+
+    return res;
 };
