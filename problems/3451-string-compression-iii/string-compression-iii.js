@@ -3,22 +3,18 @@
  * @return {string}
  */
 const compressedString = (word) => {
-    let prev = word[0];
-    let count = 1;
     let res = "";
-    for (let i = 1; i < word.length; i++) {
-        if (prev === word[i]) {
+    let i = 0;
+
+    while (i < word.length) {
+        let count = 0;
+        let cha = word[i];
+        while (i < word.length && word[i] === cha && count < 9) {
             count ++;
-        } else {
-            res += count + prev;
-            count = 1;
-            prev = word[i]
+            i++;
         }
-        if (count === 10) {
-            res += 9 + prev;
-            count = 1;
-        }
+
+        res += count + cha;
     }
-    res += count + prev;
     return res;
 };
