@@ -3,20 +3,19 @@
  * @param {number} k
  * @return {number}
  */
- const longestOnes = (nums, k) => {
-    let l = 0
-    let maxLength = 0;
-    for (let r = 0; r < nums.length; r++) {
-        if(nums[r] === 0) {
-            k --;
+const longestOnes = (nums, k) => {
+   let start= 0;
+   let count = 0;
+   let max = 0;
+
+   for (let end = 0; end < nums.length; end++) {
+        if (nums[end] === 0) count ++;
+        if (count > k) {
+            if (nums[start] === 0) count --;
+            start ++
         }
-        while (0 > k) {
-            if (nums[l] === 0) {
-                k ++;
-            }
-            l ++
-        }
-        maxLength = Math.max(maxLength, r - l + 1)
-    }
-    return maxLength;
+        max = Math.max(max, end - start + 1)
+   }
+   return max;
+ 
 };
