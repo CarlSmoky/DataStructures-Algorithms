@@ -14,5 +14,5 @@ const findMaxAverage = (nums, k) => {
         sum += nums[i + k];
         maxSum = Math.max(maxSum, sum)
     }
-    return maxSum / k
+    return maxSum / k;
 };
