@@ -4,13 +4,16 @@
  * @return {number}
  */
 const longestOnes = (nums, k) => {
-   let start = 0, end = 0;
-    for (; end < nums.length; end++) {
-        if (nums[end] === 0) k--;
+    let l = 0;
+    let r = 0;
+    for (; r < nums.length; r++) {
+        if (nums[r] === 0) {
+            k --;
+        }
         if (k < 0) {
-            if (nums[start] === 0) k++;
-            start++;
+            if (nums[l] === 0) k ++;
+            l ++;
         }
     }
-    return end - start;
+    return r - l;
 };
