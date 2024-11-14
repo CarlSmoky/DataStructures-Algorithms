@@ -3,20 +3,21 @@
  * @return {number}
  */
 const longestSubarray = nums => {
-    let maxLen = 0;
-    let countZero = 0;
+    let k = 1;
     let l = 0;
+    let r = 0
 
-    for (let r = 0; r < nums.length; r++) {
-        if (nums[r] === 0) countZero++;
-
-        while (countZero > 1) {
-            if (nums[l] === 0) countZero--;
+    for (; r < nums.length; r++) {
+        if (nums[r] === 0) {
+            k--;
+        }
+        if (k < 0) {
+            if (nums[l] === 0) {
+                k++;
+            }
             l++;
         }
-
-        maxLen = Math.max(maxLen, r - l);
     }
 
-    return maxLen;
+    return r - l - 1;
 };
