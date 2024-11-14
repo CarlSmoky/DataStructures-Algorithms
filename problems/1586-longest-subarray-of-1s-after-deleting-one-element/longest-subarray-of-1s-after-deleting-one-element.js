@@ -2,25 +2,21 @@
  * @param {number[]} nums
  * @return {number}
  */
- const longestSubarray = (nums) => {
+const longestSubarray = nums => {
+    let maxLen = 0;
+    let countZero = 0;
     let l = 0;
-    let result = 0;
-    let zeroCount = 0;
-    for(let r = 0; r < nums.length; r++){     
-        if(nums[r] === 0){
-            zeroCount++
-        }
 
-        if(zeroCount > 1){
-            if(nums[l] === 0){
-                zeroCount--;
-            }
+    for (let r = 0; r < nums.length; r++) {
+        if (nums[r] === 0) countZero++;
+
+        while (countZero > 1) {
+            if (nums[l] === 0) countZero--;
             l++;
         }
-        
-        if(zeroCount <= 1){
-            result = Math.max(result, r - l);
-        }
+
+        maxLen = Math.max(maxLen, r - l);
     }
-    return result;
+
+    return maxLen;
 };
