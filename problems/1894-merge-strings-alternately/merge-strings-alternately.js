@@ -4,15 +4,16 @@
  * @return {string}
  */
 const mergeAlternately = (word1, word2) => {
-    let first = 0;
-    let second = 0;
-    let result = "";
-    while (first < word1.length || second < word2.length) {
-        // Nullish coalescing operator (??)
-        result += word1[first] ?? "";
-        result += word2[second] ?? "";
-        first ++;
-        second ++;
+    let res = "";
+    let i = 0
+    while (i < word1.length || i < word2.length) {
+        if (i < word1.length) {
+            res += word1[i];
+        }
+        if (i < word2.length) {
+            res += word2[i];
+        }
+        i ++;
     }
-    return  result;
+    return res;
 };
