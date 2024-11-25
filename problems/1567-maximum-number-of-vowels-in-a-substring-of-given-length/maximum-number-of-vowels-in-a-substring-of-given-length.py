@@ -6,10 +6,13 @@ class Solution:
             if cha in vowels:
                 count += 1
         maxCount = count
+
         for i in range(len(s) - k):
             if s[i] in vowels:
                 count -= 1
             if s[i + k] in vowels:
                 count += 1
-            maxCount = max(maxCount, count)
+            maxCount = max(count, maxCount)
+        
         return maxCount
+            
