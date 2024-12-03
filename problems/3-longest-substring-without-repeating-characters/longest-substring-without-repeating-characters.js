@@ -5,15 +5,15 @@
 const lengthOfLongestSubstring = (s) => {
     let res = 0;
     let l = 0;
-    const count = new Map();
+    const count = new Set();
 
     for (let r = 0; r < s.length; r++) {
-        count.set(s[r], (count.get(s[r]) || 0) + 1);
-        
-        while (count.get(s[r]) > 1) {
-            count.set(s[l], count.get(s[l]) - 1);
+        while (count.has(s[r])) {
+            count.delete(s[l]);
             l++;
         }
+        
+        count.add(s[r])
         res = Math.max(res, r - l + 1);
     }
     return res;
